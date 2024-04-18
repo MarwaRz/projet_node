@@ -1,0 +1,68 @@
+<%- include('../header') %>
+
+<div class="container">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-center text-primary px-3">reservation</h6>
+        <h1 class="mb-5">MY ROOM RESERVATION</h1>
+    </div>
+
+    <div class="row justify-content-center">
+        <% reservations.forEach((reservation, index) => { %>
+            <% if (index % 3 === 0) { %> <!-- Start new row for every third reservation -->
+                </div>
+                <div class="row justify-content-center">
+            <% } %>
+            <div class="col-lg-3 col-sm-1 wow fadeInUp" data-wow-delay="0.3s" style="width: 440px;">
+                <div class="service-item rounded pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-hotel text-primary mb-4"></i>
+                       
+                        <p>Booking date: <%= formattedDate(reservation.date) %></p>
+                        <p>Start Time : <%= reservation.heureDebut %></p>
+                        <p>End Time : <%= reservation.heureFin %></p>
+                        <p>Description : <%= reservation.description %></p>
+                        <div class="d-flex justify-content-between">
+                            <small class="border-end me-2 pe-1">
+                                <a  href="/reservation/updateGetReservation/<%= reservation._id %>">
+                                    <i class="fa fa-edit text-primary me-1"> </i>Update
+                                </a>
+                            </small>
+                            <small class="border-end me-3 pe-3">
+                                <a href="/reservation/delete/<%= reservation._id %>" class="delete-room-link" data-room-id="<%= reservation._id %>">
+                                    <i class="fa fa-trash text-primary me-2"></i>Cancel the reservation
+                                </a>
+                            </small>
+                        </div>
+                    </div>                
+
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<% function formattedDate(dateString) {
+    const date = new Date(dateString);
+    const formattedDate = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+    return formattedDate;
+} %>
+
+<%- include('../footer') %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+
+
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #686868;
+        text-align: left;
+        padding: 8px;
+        color: #000000;
+        font-size: 20px;
+    }
+
+    th {
+        background-color: #86B817;
+        color: aliceblue;
+    }
+</style>
+
+
+ <%- include('../headerU') %>
+
+   <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title bg-white text-center text-primary px-3">reservation</h6>
+                    <h1 class="mb-5">The room " <%= room.nom %> "is not available during the following times:</h1>
+                </div>
+                <div class="row justify-content-center">
+       <div style="text-align: center;" class="container">
+
+        <table style="margin: 0 auto;" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <thead>
+                
+                <tr>
+                    <th>Booking date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% reservations.forEach(function(reservation) { %>
+                    <tr>
+                        <td><%= formattedDate(reservation.date) %></td>
+                        <td><%= reservation.heureDebut %></td>
+                        <td><%= reservation.heureFin %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        
+    </div></div>
+
+    <% function formattedDate(dateString) {
+        const date = new Date(dateString);
+        const formattedDate = ("0" + date.getDate()).slice(-2) + "/" + ("0" + (date.getMonth() + 1)).slice(-2) + "/" + date.getFullYear();
+        return formattedDate;
+    } %>
+    </div><%- include('../footer') %>

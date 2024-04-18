@@ -1,0 +1,85 @@
+
+
+
+<%- include('headerU') %>
+
+
+<!-- JavaScript Libraries -->
+<div class="container-xxl bg-white p-0">
+    <!-- Contact Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-lg" style="border-radius: 20px; width: 700px; height: 600px;"> 
+                        <div class="card-body">
+                            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                                <h6 class="section-title text-center text-uppercase" style="color: white;">LOGIN</h6>
+                                <h3 class="mb-5" >
+                                    <span class="text-primary text-uppercase" style="display: block;">Create an account</span>
+                                </h3>
+                                                           </div>
+                                                           <form action="/user/register" method="post">
+                                 <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name"    pattern=".{5,}" title="first name must be at least 5 characters long"  required>
+                                        <label for="firstname">first name</label>
+                                    </div>
+                                </div>
+                            
+
+
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name"    pattern=".{5,}" title="last name must be at least 5 characters long" required>
+                                        <label for="lastname">last name</label>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input    type="email" class="form-control" id="email" name="email" placeholder="Email"  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"  title="Please enter a valid email address" required>
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="adress" name="adress" placeholder="Adress"    pattern=".{5,}" title="Adress must be at least 5 characters long"   required>
+                                        <label for="adress">Adress</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" pattern=".{7,}" title="Password must be at least 7 characters long" required>
+                                        <label for="password">Password</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                                </div>
+                                <div>
+                                    <h6 class="text-center" style="position: absolute; margin-top: 25px;margin-left: 210px;color: rgb(53, 53, 53);">already an have account ?</h6><a   href="/login"   style="color:#86B817;position: absolute; margin-top: 25px;margin-left: 420px;"> Login</a>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<!-- JavaScript Libraries -->
+<%- include('footer') %>

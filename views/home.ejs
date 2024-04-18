@@ -1,0 +1,56 @@
+<!-- 
+<h1>Profil de <%= user.firstname %> <%= user.lastname %></h1>
+<p>Rôle : <%= user.role %></p>
+<form action="/user/logout" method="post">
+    <button type="submit">Déconnexion</button>
+</form>
+-->
+
+<%- include('header') %>
+
+<div class="container-xxl py-5">
+  <div class="container">
+      <div class="row g-5">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+              <div class="position-relative h-100">
+                  <img class="img-fluid position-absolute w-100 h-100" src="/img/meet2.jpg" alt="" style="object-fit: cover;">
+              </div>
+          </div>
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+              <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+              <h1 class="mb-4">Welcome to <span class="text-primary">Reservation</span><h1 style="font-size: 30px; color: rgb(0, 0, 0);">Mr/Mrs <%= user.firstname %> <%= user.lastname %></h1>
+              <p> <%= user.role %></p></h1>
+              <p class="mb-4">You can effortlessly navigate through available meeting spaces, check their schedules, and secure the perfect room for your needs in just a few clicks.</p>
+              <p class="mb-4"> In today's dynamic workplace, we understand the importance of having a reliable tool to streamline the process of reserving meeting spaces. That's where we come in.</p>
+              <div class="row gy-2 gx-4 mb-4">
+                  <div class="col-sm-6">
+                      <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Executive Setting</p>
+                  </div>
+                  <div class="col-sm-6">
+                      <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Privacy and Security</p>
+                  </div>
+                  <div class="col-sm-6">
+                      <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Advanced Technology</p>
+                  </div>
+                  <div class="col-sm-6">
+                      <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Ample Space</p>
+                  </div>
+                  <div class="col-sm-6">
+                      <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Environmental Controls</p>
+                  </div>
+                  <div class="col-sm-6">
+                      <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Refreshment Options</p>
+                  </div>
+              </div>
+              <a class="btn btn-primary py-3 px-5 mt-2" href="/room/list">Room List</a>
+              <% if (user.role === 'admin') { %>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="/Addrooms">Add new room</a>
+
+            <% } %>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- About End -->
+
+<%- include('footer') %>

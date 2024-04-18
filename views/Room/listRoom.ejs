@@ -1,0 +1,134 @@
+
+
+<%- include('../header') %>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3">Rooms</h6>
+            <h1 class="mb-5">OUR ROOMS</h1>
+        </div>
+        <div class="row justify-content-center">
+            <% rooms.forEach((room, index) => { %>
+                <div class="col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="package-item">
+                        <div class="overflow-hidden">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid"    width="500px" style="max-height: 280px; " src="/<%= room.image %>" alt="">
+                            </div>                        </div>
+                        <div class="d-flex border-bottom">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt text-primary me-2"></i><%= room.localisation %></small>
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i></small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i><%= room.capacite %></small>
+                        </div>
+                        <div class="text-center p-4">
+                            <h3 class="mb-0"><%= room.nom %> </h3>
+                            <div class="mb-3">
+                              
+                            </div>
+                            <p><%= room.description %></p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <% if   (user.role ==='user') { %>
+                                    <a href="/reservation/Reservation/add/<%= room._id %>" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;height: 40px; display: flex; justify-content: center; align-items: center;">Create reservation</a>
+                                    <a href="/reservation/rooms/<%= room._id %>/reservations" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 0px 0 0 0px;height: 40px; display: flex; justify-content: center; align-items: center;">View details</a>
+
+                                    <a href="/reservation/Reservation/add/<%= room._id %>" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0; height: 40px; display: flex; justify-content: center; align-items: center;">Reserve</a>
+                                
+                                
+                                <% } else if (user.role === 'admin') { %>
+                           
+                                    <small class="border-end me-3 pe-3"><i class="fa fa-calendar text-primary me-2"><a href="/reservation/rooms/<%= room._id%>/reservations" ></i>View details</a></small>
+                                    
+                                    <small class="border-end me-3 pe-3">
+        
+                                        <a href="/room/updateGetRoom/<%= room._id %>">
+                                        <i class="fa fa-edit text-primary me-2"> </i>Update</a></small>
+                                    <small class="border-end me-3 pe-3">
+                                        <a href="/room/Deleterooms/<%= room._id %>" class="delete-room-link" data-room-id="<%= room._id %>">
+                                            <i class="fa fa-trash text-primary me-2"></i>Delete
+                                        </a>
+                                    </small>
+                                
+                                <% } %>
+                               
+                            </div>
+
+
+
+
+
+                            
+                           
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+                <% if ((index + 1) % 3 === 0) { %>
+                    </div><div class="row justify-content-center">
+                <% } %>
+
+
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<%- include('../footer') %>
+
+
+<script>
+     
+    document.addEventListener("DOMContentLoaded", () => {
+        const deleteLinks = document.querySelectorAll(".delete-room-link");
+    
+        deleteLinks.forEach(link => {
+            link.addEventListener("click", (event) => {
+                event.preventDefault();
+                const confirmDelete = confirm("Are you sure you want to delete this room??");
+                if (confirmDelete) {
+                    const roomId = link.getAttribute("data-room-id");
+                    fetch(link.getAttribute("href"), {
+                        method: 'DELETE'
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Faire quelque chose après la suppression, comme rediriger l'utilisateur
+                            window.location.reload(); // Recharger la page par exemple
+                        } else {
+                            throw new Error('Erreur lors de la suppression de la chambre');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        // Gérer les erreurs
+                    });
+                }
+            });
+        });
+    });
+    </script>
