@@ -4,15 +4,16 @@ const nodemailer = require('nodemailer');
 const setupTransporter = () => {
     return nodemailer.createTransport({
         service: 'gmail',
-        host:"razgallah.marwa99@gmail.com",
+        host:"bejaouib219@gmail.com",
         port:587,
         secure:false,
         auth: {
-            user: 'razgallah.marwa99@gmail.com', 
-            pass: 'ocnl vlbm wppr ovtn'
+            user: 'bejaouib219@gmail.com', 
+            pass: 'gafp ygqc oofx lpwa'
         }
     });
 };
+
 
 
 const sendReservationConfirmationEmail = async (userEmail, reservation, roomName) => {
@@ -20,13 +21,13 @@ const sendReservationConfirmationEmail = async (userEmail, reservation, roomName
         const transporter = setupTransporter();
 
         await transporter.sendMail({
-            from: 'razgallah.marwa99@gmail.com',
+            from: 'bejaouib219@gmail.com',
             to: userEmail,
             subject: 'Confirmation ',
             html: `Your reservation has been confirmed for the room ${roomName} on ${reservation.date} from ${reservation.heureDebut} to ${reservation.heureFin}.`
         });
 
-        console.log('Confirmation email sent successfully');
+        console.log(`Confirmation email sent successfully to ${userEmail}`);
     } catch (error) {
         console.error('Error sending confirmation email :', error);
     }
@@ -39,7 +40,7 @@ const sendReservationModificationEmail = async (userEmail, reservation, roomName
         const transporter = setupTransporter();
 
         await transporter.sendMail({
-            from: 'razgallah.marwa99@gmail.com', 
+            from: 'bejaouib219@gmail.com', 
      
             to: userEmail,
             subject: 'Update Reservation',
@@ -58,7 +59,7 @@ const sendReservationCancellationEmail = async (userEmail, reservation, roomName
         const transporter = setupTransporter();
 
         await transporter.sendMail({
-            from: 'razgallah.marwa99@gmail.com', 
+            from: 'bejaouib219@gmail.com', 
            
             to: userEmail,
             subject: 'Annulation de réservation',

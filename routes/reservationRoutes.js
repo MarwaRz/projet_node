@@ -88,7 +88,7 @@ router.post('/updatereservations/:id', async (req, res) => {
         const user = await User.findById(userId); 
         const userEmail = user.email;
         await sendReservationModificationEmail(userEmail, reservation, room.nom);
-        res.redirect('/reservation/myReservation');
+        res.redirect('/reservation/userReservation');
       
     } catch (error) {
         console.error(error);
@@ -119,7 +119,7 @@ router.get('/delete/:id', async (req, res) => {
         const user = await User.findById(userId); 
         const userEmail = user.email;
         await sendReservationCancellationEmail(userEmail, reservation, room.nom);
-        res.redirect('/reservation/myReservation');
+        res.redirect('/reservation/userReservation');
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Erreur lors de l\'annulation de la réservation' });
@@ -201,7 +201,7 @@ router.post('/reservations', async (req, res) => {
         const user = await User.findById(userId); 
         const userEmail = user.email;
         await sendReservationConfirmationEmail(userEmail, reservation, room.nom);
-        res.redirect('/reservation/myReservation');
+        res.redirect('/reservation/userReservation');
     
     } catch (error) {
         console.error("Erreur lors de la réservation de la salle de réunion :", error); 

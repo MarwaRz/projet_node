@@ -53,6 +53,10 @@ router.get('/home', async (req, res) => {
     res.redirect('/login'); 
   }
 });
+
+
+
+
 router.post('/logout', logoutMiddleware);
 
 module.exports = router;
