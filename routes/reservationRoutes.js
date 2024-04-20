@@ -17,13 +17,7 @@ router.get('/myReservation', async (req, res) => {
     try {
         const token = req.cookies.token;
       
-        
-          const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-          
-        
-            
-        
-    
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
         
         const userId = decodedToken.userId;
         const user = await User.findById(userId); 
@@ -38,7 +32,7 @@ router.get('/myReservation', async (req, res) => {
 
 router.post('/updatereservations/:id', async (req, res) => {
     try {
-        // Vérification du jeton JWT
+        // Vérification du jeton JWT jwt_secret l fel env
         const token = req.cookies.token;
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
         const userId = decodedToken.userId;
@@ -54,7 +48,7 @@ router.post('/updatereservations/:id', async (req, res) => {
             return res.status(404).json({ message: 'Salle de réunion non trouvée' });
         }
        
-        // Vérification des champs de la réservation
+        // Vérification des champs de la réservation kima lkol
         if (updatedReservation.heureDebut >= updatedReservation.heureFin) {
             return res.status(400).json({ message: 'L\'heure de fin doit être ultérieure à l\'heure de début' });
         }
